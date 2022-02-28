@@ -30,6 +30,7 @@ void Player::FixedUpdate()
 void Player::Update()
 {
 	cout << "Player::Update" << endl;
+
 }
 
 void Player::LateUpdate()

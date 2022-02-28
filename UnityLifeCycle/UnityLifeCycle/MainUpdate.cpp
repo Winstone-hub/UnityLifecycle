@@ -1,5 +1,5 @@
 #include "MainUpdate.h"
-#include "Player.h"
+#include "SceneManager.h"
 
 
 MainUpdate::MainUpdate()
@@ -15,36 +15,36 @@ MainUpdate::~MainUpdate()
 
 void MainUpdate::Awake()
 {
-	m_pPlayer = new Player;
+	SceneManager::GetInstance()->SetScene(SCENEID_LOGO);
 }
 
 void MainUpdate::Start()
 {
-	m_pPlayer->Start();
+	SceneManager::GetInstance()->Start();
 }
 
 void MainUpdate::FixedUpdate()
 {
-	m_pPlayer->FixedUpdate();
+	SceneManager::GetInstance()->FixedUpdate();
 }
 
 void MainUpdate::Update()
 {
-	m_pPlayer->Update();
+	SceneManager::GetInstance()->Update();
 }
 
 void MainUpdate::LateUpdate()
 {
-	m_pPlayer->LateUpdate();
+	SceneManager::GetInstance()->LateUpdate();
 }
 
 void MainUpdate::Render()
 {
-	m_pPlayer->Render();
+	SceneManager::GetInstance()->Render();
 }
 
 void MainUpdate::OnDestroy()
 {
-	m_pPlayer->OnDestroy();
+	SceneManager::GetInstance()->OnDestroy();
 }
 

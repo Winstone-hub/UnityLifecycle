@@ -1,11 +1,14 @@
+#pragma once
 #include "MainUpdate.h"
+
 
 
 
 int main(void)
 {
-	ULONGLONG OldTime = GetTickCount64();
 	ULONGLONG DeltaTime = 0;
+	ULONGLONG OriginTime = GetTickCount64();
+	ULONGLONG OldTime = GetTickCount64();
 
 	// ** Create
 	MainUpdate Main; 
@@ -16,32 +19,32 @@ int main(void)
 
 	while (true)
 	{
+		system("cls");
 		OldTime = GetTickCount64();
 
-		// ** Physcis
-		Main.FixedUpdate();
+		if (OriginTime + DeltaTime < GetTickCount64())
+		{
+			OriginTime = GetTickCount64();
 
-		// ** Progress
-		Main.Update();
-		Main.LateUpdate();
+			// ** Physcis
+			Main.FixedUpdate();
+			//system("pause");
+		}
+		else
+		{
+			// ** Progress
+			Main.Update();
+			Main.LateUpdate();
 
-		// ** Render
-		Main.Render();
+			// ** Render
+			Main.Render();
+		}
 
-		DeltaTime = GetTickCount64() - OldTime;
-
-		cout << (float)DeltaTime / 1000.f << endl;
-
-		system("pause");
-
-		if (GetAsyncKeyState(VK_RETURN))
-			break;
+		DeltaTime = 1000;// GetTickCount64() - OldTime;
 	}
 
 	// ** Release
 	Main.OnDestroy();
 	
-	
-
 	return 0;
 }

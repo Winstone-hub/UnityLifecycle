@@ -1,11 +1,8 @@
 #pragma once
 #include "Headers.h"
 
-class Object;
 class MainUpdate
 {
-private:
-	Object* m_pPlayer;
 public:
 	void Awake();
 	void Start();

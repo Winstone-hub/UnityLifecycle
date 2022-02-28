@@ -22,6 +22,30 @@
     <Filter Include="소스 파일\01. Object\Player">
       <UniqueIdentifier>{29d0591c-b107-4350-ac1f-c4dfc1c51e26}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\02. Scene">
+      <UniqueIdentifier>{199a42ef-a35f-472a-9b2d-a62b6c8de4f8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\02. Scene\Logo">
+      <UniqueIdentifier>{83cf36c4-ac32-4932-acdf-d300d1225b14}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\02. Scene\Menu">
+      <UniqueIdentifier>{6a240aa6-cf6b-4330-bf5a-22e912d10279}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\02. Scene\Stage">
+      <UniqueIdentifier>{7a77a176-881e-4354-a610-7728e5a7b7bc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\99. Manager">
+      <UniqueIdentifier>{52306aee-0e04-43bc-850a-478d5767c57d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\99. Manager\SceneManager">
+      <UniqueIdentifier>{b018afcf-1130-4c92-9cb6-8a8628461fd6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\Include">
+      <UniqueIdentifier>{150fff3b-9486-4b67-9eac-f3b65e263a07}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\Headers">
+      <UniqueIdentifier>{49cb18cd-c70f-461c-970d-0210b84cadf6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -36,6 +60,21 @@
     <ClCompile Include="Player.cpp">
       <Filter>소스 파일\01. Object\Player</Filter>
     </ClCompile>
+    <ClCompile Include="Scene.cpp">
+      <Filter>소스 파일\02. Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Logo.cpp">
+      <Filter>소스 파일\02. Scene\Logo</Filter>
+    </ClCompile>
+    <ClCompile Include="Menu.cpp">
+      <Filter>소스 파일\02. Scene\Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="Stage.cpp">
+      <Filter>소스 파일\02. Scene\Stage</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneManager.cpp">
+      <Filter>소스 파일\99. Manager\SceneManager</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MainUpdate.h">
@@ -49,6 +88,27 @@
     </ClInclude>
     <ClInclude Include="Player.h">
       <Filter>소스 파일\01. Object\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene.h">
+      <Filter>소스 파일\02. Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Logo.h">
+      <Filter>소스 파일\02. Scene\Logo</Filter>
+    </ClInclude>
+    <ClInclude Include="Menu.h">
+      <Filter>소스 파일\02. Scene\Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="Stage.h">
+      <Filter>소스 파일\02. Scene\Stage</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneManager.h">
+      <Filter>소스 파일\99. Manager\SceneManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Enum.h">
+      <Filter>헤더 파일\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="Define.h">
+      <Filter>헤더 파일\Include</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
