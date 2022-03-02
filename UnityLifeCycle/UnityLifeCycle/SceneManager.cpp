@@ -42,6 +42,7 @@ void SceneManager::SetScene(SCENEID _SceneState)
 	}
 
 	SceneState->Awake();
+	SceneState->Start();
 }
 
 void SceneManager::Start()

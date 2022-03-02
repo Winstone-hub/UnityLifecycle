@@ -1,11 +1,8 @@
 #pragma once
-#include "Scene.h"
+#include "Object.h"
 
-class Object;
-class Stage : public Scene
+class Enemy : public Object
 {
-private:
-	vector<Object*>* m_pObjects;
 public:
 	virtual void Awake()override;
 	virtual void Start()override;
@@ -15,7 +12,7 @@ public:
 	virtual void Render()override;
 	virtual void OnDestroy()override;
 public:
-	Stage();
-	virtual ~Stage();
+	Enemy();
+	virtual ~Enemy();
 };
 

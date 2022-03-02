@@ -14,7 +14,7 @@ Player::~Player()
 
 void Player::Awake()
 {
-	cout << "Player::Awake" << endl;
+	m_strKey = "Player";
 }
 
 void Player::Start()

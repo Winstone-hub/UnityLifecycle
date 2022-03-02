@@ -1,11 +1,15 @@
 #include "Stage.h"
 #include "SceneManager.h"
+#include "ObjectManager.h"
+#include "ObjectFactory.h"
+
 #include "Player.h"
+#include "Enemy.h"
 
 
 Stage::Stage()
 {
-	Awake();
+
 }
 
 Stage::~Stage()
@@ -16,40 +20,47 @@ Stage::~Stage()
 
 void Stage::Awake()
 {
-	m_pPlayer = new Player;
+	Object* pPlayer = ObjectFactory<Player>::CreateObject();
+	ObjectManager::GetInstance()->AddObject(pPlayer);
+
+	for (int i = 0; i < 10; ++i)
+	{
+		Object* pEnemy = ObjectFactory<Enemy>::CreateObject();
+		pEnemy->SetNumber(i);
+
+		ObjectManager::GetInstance()->AddObject(pEnemy);
+	}
 }
 
 void Stage::Start()
 {
-	m_pPlayer->Start();
+	m_pObjects = ObjectManager::GetInstance()->GetObjectList("Enemy");
 }
 
 void Stage::FixedUpdate()
 {
-	m_pPlayer->FixedUpdate();
+
 }
 
 void Stage::Update()
 {
-	m_pPlayer->Update();
+
 }
 
 void Stage::LateUpdate()
 {
-	m_pPlayer->LateUpdate();
-
-
 	if (GetAsyncKeyState('D'))
 		SceneManager::GetInstance()->SetScene(SCENEID_EXIT);
 }
 
 void Stage::Render()
 {
-	m_pPlayer->Render();
+	for (vector<Object*>::iterator iter = m_pObjects->begin();
+		iter != m_pObjects->end(); ++iter)
+		(*iter)->Render();
 }
 
 void Stage::OnDestroy()
 {
-	m_pPlayer->OnDestroy();
-	SafeRelease(m_pPlayer);
+
 }

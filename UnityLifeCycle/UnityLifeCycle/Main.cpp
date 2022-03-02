@@ -2,8 +2,6 @@
 #include "MainUpdate.h"
 
 
-
-
 int main(void)
 {
 	ULONGLONG DeltaTime = 0;
