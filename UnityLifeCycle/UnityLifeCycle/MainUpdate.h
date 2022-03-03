@@ -5,9 +5,6 @@ class MainUpdate
 {
 public:
 	void Awake();
-	void Start();
-
-
 	void FixedUpdate();
 
 	void Update();

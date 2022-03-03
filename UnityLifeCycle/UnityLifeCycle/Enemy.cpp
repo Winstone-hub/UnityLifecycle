@@ -1,5 +1,5 @@
 #include "Enemy.h"
-
+#include "ScreenManager.h"
 
 Enemy::Enemy()
 {
@@ -11,7 +11,6 @@ Enemy::~Enemy()
 
 }
 
-
 void Enemy::Awake()
 {
 	m_strKey = "Enemy";
@@ -19,31 +18,35 @@ void Enemy::Awake()
 
 void Enemy::Start()
 {
-	cout << "Enemy::Start" << endl;
+	m_tInfo.Position = Vector3(0.0f, 0.0f, 0.0f);
+	m_tInfo.Rotation = Vector3(0.0f, 0.0f, 0.0f);
+	m_tInfo.Scale = Vector3(0.0f, 0.0f, 0.0f);
+
+	m_strTexture = "Ȫ";
 }
 
 void Enemy::FixedUpdate()
 {
-	cout << "Enemy::FixedUpdate" << endl;
+
 }
 
 void Enemy::Update()
 {
-	cout << "Enemy::Update" << endl;
+
 }
 
 void Enemy::LateUpdate()
 {
-	cout << "Enemy::LateUpdate" << endl;
+
 }
 
 void Enemy::Render()
 {
-	cout << "Enemy : " << m_iNumber << endl;
+	ScreenManager::GetInstance()->SetCursorPosition(m_tInfo.Position);
+	cout << m_strTexture;
 }
 
 void Enemy::OnDestroy()
 {
-	cout << "Enemy::OnDestroy" << endl;
-}
 
+}

@@ -1,12 +1,12 @@
 #pragma once
 #include "Headers.h"
 
-class Object
+class GameObject
 {
 protected:
 	Transform m_tInfo;
 	string m_strKey;
-	int m_iNumber;
+	string m_strTexture;
 public:
 	virtual void Awake()PURE;
 	virtual void Start()PURE;
@@ -17,9 +17,6 @@ public:
 	virtual void OnDestroy()PURE;
 public:
 	string GetKey() { return m_strKey; }
-
-	int GetNumber() { return m_iNumber; }
-	void SetNumber(int _inum) { m_iNumber = _inum; }
 
 	Vector3 GetPosition() { return m_tInfo.Position; }
 	void SetPosition(Vector3 _Position) { m_tInfo.Position = _Position; }
@@ -33,6 +30,6 @@ public:
 	Transform GetTransform() { return m_tInfo; }
 	void SetTransform(Transform _Info)  { m_tInfo = _Info; }
 public:
-	Object();
-	virtual ~Object();
+	GameObject();
+	virtual ~GameObject();
 };

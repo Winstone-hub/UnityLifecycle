@@ -1,7 +1,7 @@
 #pragma once
-#include "Object.h"
+#include "GameObject.h"
 
-class Enemy : public Object
+class Enemy : public GameObject
 {
 public:
 	virtual void Awake()override;

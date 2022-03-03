@@ -41,7 +41,13 @@ void SceneManager::SetScene(SCENEID _SceneState)
 		break;
 	}
 
+	/*
+	 * 문제가 있을수 있다는 점을 인지함.
+	 * 
+	 * Awake 함수는 최초 1회만 실행 되어야하지만 현재 씬 변경마다 실행됨.
+	 */ 
 	SceneState->Awake();
+
 	SceneState->Start();
 }
 

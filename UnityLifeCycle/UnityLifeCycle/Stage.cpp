@@ -17,16 +17,16 @@ Stage::~Stage()
 
 }
 
-
 void Stage::Awake()
 {
-	Object* pPlayer = ObjectFactory<Player>::CreateObject();
+	GameObject* pPlayer = ObjectFactory<Player>::CreateObject();
 	ObjectManager::GetInstance()->AddObject(pPlayer);
 
-	for (int i = 0; i < 10; ++i)
+	for (int i = 0; i < 1; ++i)
 	{
-		Object* pEnemy = ObjectFactory<Enemy>::CreateObject();
-		pEnemy->SetNumber(i);
+		srand(UINT(GetTickCount64() * (i + 1)));
+		Vector3 Pos = Vector3(float(rand()%100), float(rand() % 26));
+		GameObject* pEnemy = ObjectFactory<Enemy>::CreateObject(Pos);
 
 		ObjectManager::GetInstance()->AddObject(pEnemy);
 	}
@@ -35,6 +35,8 @@ void Stage::Awake()
 void Stage::Start()
 {
 	m_pObjects = ObjectManager::GetInstance()->GetObjectList("Enemy");
+
+	m_pPlayer = ObjectManager::GetInstance()->GetObjectList("Player")->front();
 }
 
 void Stage::FixedUpdate()
@@ -44,7 +46,11 @@ void Stage::FixedUpdate()
 
 void Stage::Update()
 {
+	m_pPlayer->Update();
 
+	for (vector<GameObject*>::iterator iter = m_pObjects->begin();
+		iter != m_pObjects->end(); ++iter)
+		(*iter)->Update();
 }
 
 void Stage::LateUpdate()
@@ -55,12 +61,18 @@ void Stage::LateUpdate()
 
 void Stage::Render()
 {
-	for (vector<Object*>::iterator iter = m_pObjects->begin();
+	m_pPlayer->Render();
+
+	for (vector<GameObject*>::iterator iter = m_pObjects->begin();
 		iter != m_pObjects->end(); ++iter)
 		(*iter)->Render();
 }
 
 void Stage::OnDestroy()
 {
+	SafeRelease(m_pPlayer);
 
+	for (vector<GameObject*>::iterator iter = m_pObjects->begin();
+		iter != m_pObjects->end(); ++iter)
+		SafeRelease((*iter));
 }

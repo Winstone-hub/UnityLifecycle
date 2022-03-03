@@ -1,7 +1,7 @@
 #pragma once
 #include "Headers.h"
 
-class Object;
+class GameObject;
 class ObjectManager
 {
 private:
@@ -14,14 +14,13 @@ public:
 		return Instance;
 	}
 private:
-	map<string, vector<Object*>> m_pObjectList;
+	map<string, vector<GameObject*>> m_pObjectList;
 public:
-	void AddObject(Object* _pObj);
-
+	void AddObject(GameObject* _pObj);
 public:
-	vector<Object*>* GetObjectList(string _Key)
+	vector<GameObject*>* GetObjectList(string _Key)
 	{
-		map<string, vector<Object*>>::iterator iter = m_pObjectList.find(_Key);
+		map<string, vector<GameObject*>>::iterator iter = m_pObjectList.find(_Key);
 
 		if (iter == m_pObjectList.end())
 			return nullptr;
@@ -30,7 +29,6 @@ public:
 	}
 
 	void Update();
-
 
 	/*
 	void Start();

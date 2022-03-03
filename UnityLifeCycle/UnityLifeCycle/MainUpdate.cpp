@@ -18,11 +18,6 @@ void MainUpdate::Awake()
 	SceneManager::GetInstance()->SetScene(SCENEID_LOGO);
 }
 
-void MainUpdate::Start()
-{
-	SceneManager::GetInstance()->Start();
-}
-
 void MainUpdate::FixedUpdate()
 {
 	SceneManager::GetInstance()->FixedUpdate();

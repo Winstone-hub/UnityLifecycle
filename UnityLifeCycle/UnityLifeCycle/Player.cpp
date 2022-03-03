@@ -1,5 +1,5 @@
 #include "Player.h"
-
+#include "ScreenManager.h"
 
 Player::Player()
 {
@@ -19,32 +19,51 @@ void Player::Awake()
 
 void Player::Start()
 {
-	cout << "Player::Start" << endl;
+	m_tInfo.Position = Vector3(0.0f, 0.0f, 0.0f);
+	m_tInfo.Rotation = Vector3(0.0f, 0.0f, 0.0f);
+	m_tInfo.Scale = Vector3(0.0f, 0.0f, 0.0f);
+
+	m_strTexture = "¿Ê";
 }
 
 void Player::FixedUpdate()
 {
-	cout << "Player::FixedUpdate" << endl;
+
 }
 
 void Player::Update()
 {
-	cout << "Player::Update" << endl;
-
+	if (GetAsyncKeyState(VK_UP))
+	{
+		--m_tInfo.Position.y;
+	}
+	if (GetAsyncKeyState(VK_DOWN))
+	{
+		++m_tInfo.Position.y;
+	}
+	if (GetAsyncKeyState(VK_LEFT))
+	{
+		--m_tInfo.Position.x;
+	}
+	if (GetAsyncKeyState(VK_RIGHT))
+	{
+		++m_tInfo.Position.x;
+	}
 }
 
 void Player::LateUpdate()
 {
-	cout << "Player::LateUpdate" << endl;
+
 }
 
 void Player::Render()
 {
-	cout << "Player::Render" << endl;
+	ScreenManager::GetInstance()->SetCursorPosition(m_tInfo.Position);
+	cout << m_strTexture;
 }
 
 void Player::OnDestroy()
 {
-	cout << "Player::OnDestroy" << endl;
+
 }
 
