@@ -29,7 +29,7 @@ void Menu::FixedUpdate()
 
 void Menu::Update()
 {
-	cout << "Menu::Update" << endl;
+
 }
 
 void Menu::LateUpdate()
@@ -40,7 +40,7 @@ void Menu::LateUpdate()
 
 void Menu::Render()
 {
-	cout << "Menu::Render" << endl;
+
 }
 
 void Menu::OnDestroy()

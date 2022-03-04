@@ -15,23 +15,16 @@ Player::~Player()
 void Player::Awake()
 {
 	m_strKey = "Player";
-
-	for (int i = 0; i < 27; ++i)
-	{
-		for (int j = 0; j < 100; ++j)
-		{
-			map[i][j] = 'A';
-		}
-	}	
 }
 
 void Player::Start()
 {
 	m_tInfo.Position = Vector3(0.0f, 0.0f, 0.0f);
 	m_tInfo.Rotation = Vector3(0.0f, 0.0f, 0.0f);
-	m_tInfo.Scale = Vector3(2.0f, 1.0f, 0.0f);
+	m_tInfo.Scale = Vector3(3.0f, 1.0f, 0.0f);
 
 	m_strTexture = "進";
+	Texture = (char*)"進/";
 }
 
 void Player::FixedUpdate()
@@ -57,6 +50,18 @@ void Player::Update()
 	{
 		++m_tInfo.Position.x;
 	}
+
+	if (GetAsyncKeyState(VK_SPACE))
+	{
+		Texture = (char*)"進ぱ";
+		m_tInfo.Scale.x = 4.0f;
+	}
+	else
+	{
+		Texture = (char*)"進/";
+		m_tInfo.Scale.x = 3.0f;
+	}
+
 }
 
 void Player::LateUpdate()
@@ -66,21 +71,10 @@ void Player::LateUpdate()
 
 void Player::Render()
 {
-	for (int i = 0; i < 27; ++i)
-	{
-		for (int j = 0; j < 100; ++j)
-			cout << map[i][j];
-		cout << endl;
-	}
-		
-
-
-	//DoubleBuffer::GetInstance()->SetCursorPosition(m_tInfo.Position);
-	cout << m_strTexture;
-
-
-
-
+	DoubleBuffer::GetInstance()->WriteBuffer(
+		m_tInfo.Position.x,
+		m_tInfo.Position.y,
+		Texture);
 }
 
 void Player::OnDestroy()

@@ -4,7 +4,7 @@
 class CollisionManager
 {
 public:
-	bool Collision(GameObject* _Origin, GameObject* _Target)
+	static bool Collision(GameObject* _Origin, GameObject* _Target)
 	{
 		Vector3 OriginPos = _Origin->GetPosition();
 		Vector3 TargetPos = _Target->GetPosition();

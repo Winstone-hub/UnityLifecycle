@@ -2,6 +2,8 @@
 #include "SceneManager.h"
 #include "ObjectManager.h"
 #include "ObjectFactory.h"
+#include "CollisionManager.h"
+#include "DoubleBuffer.h"
 
 #include "Player.h"
 #include "Enemy.h"
@@ -41,7 +43,14 @@ void Stage::Start()
 
 void Stage::FixedUpdate()
 {
-
+	for (vector<GameObject*>::iterator iter = m_pObjects->begin();
+		iter != m_pObjects->end(); ++iter)
+	{
+		if (CollisionManager::Collision(m_pPlayer, (*iter)))
+		{
+			DoubleBuffer::GetInstance()->WriteBuffer(1.0f, 1.0f, (char*)"충돌입니다.");
+		}
+	}
 }
 
 void Stage::Update()
@@ -62,10 +71,11 @@ void Stage::LateUpdate()
 void Stage::Render()
 {
 	m_pPlayer->Render();
-
+	
 	for (vector<GameObject*>::iterator iter = m_pObjects->begin();
 		iter != m_pObjects->end(); ++iter)
 		(*iter)->Render();
+	
 }
 
 void Stage::OnDestroy()

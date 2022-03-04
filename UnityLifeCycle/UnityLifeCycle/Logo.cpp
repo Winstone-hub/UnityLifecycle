@@ -29,7 +29,7 @@ void Logo::FixedUpdate()
 
 void Logo::Update()
 {
-	cout << "Logo::Update" << endl;
+
 }
 
 void Logo::LateUpdate()
@@ -40,7 +40,7 @@ void Logo::LateUpdate()
 
 void Logo::Render()
 {
-	cout << "Logo::Render" << endl;
+
 }
 
 void Logo::OnDestroy()

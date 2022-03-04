@@ -9,6 +9,8 @@
 */
 int main(void)
 {
+	system("mode con cols=100 lines=27");
+
 	ULONGLONG DeltaTime = 25;
 	ULONGLONG OriginTime = GetTickCount64();
 	ULONGLONG OldTime = GetTickCount64();
@@ -24,8 +26,7 @@ int main(void)
 		if (OriginTime + DeltaTime < GetTickCount64())
 		{
 			OriginTime = GetTickCount64();
-			system("cls");
-
+			
 			// ** Physcis
 			Main.FixedUpdate();
 

@@ -20,10 +20,10 @@ void Enemy::Start()
 {
 	m_tInfo.Position = Vector3(0.0f, 0.0f, 0.0f);
 	m_tInfo.Rotation = Vector3(0.0f, 0.0f, 0.0f);
-	m_tInfo.Scale = Vector3(2.0f, 1.0f, 0.0f);
+	m_tInfo.Scale = Vector3(1.0f, 1.0f, 0.0f);
 
-	m_strTexture = "A";
-	//m_strTexture = "";
+	m_strTexture = "E";
+	Texture = (char*)"E";
 }
 
 void Enemy::FixedUpdate()
@@ -43,8 +43,10 @@ void Enemy::LateUpdate()
 
 void Enemy::Render()
 {
-	//ScreenManager::GetInstance()->SetCursorPosition(m_tInfo.Position);
-	cout << m_strTexture;
+	DoubleBuffer::GetInstance()->WriteBuffer(
+		m_tInfo.Position.x,
+		m_tInfo.Position.y,
+		Texture);
 }
 
 void Enemy::OnDestroy()
