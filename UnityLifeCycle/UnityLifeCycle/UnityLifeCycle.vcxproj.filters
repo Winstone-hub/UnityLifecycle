@@ -96,11 +96,8 @@
     <ClCompile Include="ObjectManager.cpp">
       <Filter>소스 파일\99. Manager\ObjectManager</Filter>
     </ClCompile>
-    <ClCompile Include="ScreenManager.cpp">
+    <ClCompile Include="DoubleBuffer.cpp">
       <Filter>소스 파일\99. Manager\ScreenManager</Filter>
-    </ClCompile>
-    <ClCompile Include="CollisionManager.cpp">
-      <Filter>소스 파일\99. Manager\CollisionManager</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -149,7 +146,7 @@
     <ClInclude Include="ObjectFactory.h">
       <Filter>소스 파일\99. Manager\ObjectFactory</Filter>
     </ClInclude>
-    <ClInclude Include="ScreenManager.h">
+    <ClInclude Include="DoubleBuffer.h">
       <Filter>소스 파일\99. Manager\ScreenManager</Filter>
     </ClInclude>
     <ClInclude Include="CollisionManager.h">

@@ -1,5 +1,5 @@
 #include "Player.h"
-#include "ScreenManager.h"
+#include "DoubleBuffer.h"
 
 Player::Player()
 {
@@ -15,13 +15,21 @@ Player::~Player()
 void Player::Awake()
 {
 	m_strKey = "Player";
+
+	for (int i = 0; i < 27; ++i)
+	{
+		for (int j = 0; j < 100; ++j)
+		{
+			map[i][j] = 'A';
+		}
+	}	
 }
 
 void Player::Start()
 {
 	m_tInfo.Position = Vector3(0.0f, 0.0f, 0.0f);
 	m_tInfo.Rotation = Vector3(0.0f, 0.0f, 0.0f);
-	m_tInfo.Scale = Vector3(0.0f, 0.0f, 0.0f);
+	m_tInfo.Scale = Vector3(2.0f, 1.0f, 0.0f);
 
 	m_strTexture = "¿Ê";
 }
@@ -58,8 +66,21 @@ void Player::LateUpdate()
 
 void Player::Render()
 {
-	ScreenManager::GetInstance()->SetCursorPosition(m_tInfo.Position);
+	for (int i = 0; i < 27; ++i)
+	{
+		for (int j = 0; j < 100; ++j)
+			cout << map[i][j];
+		cout << endl;
+	}
+		
+
+
+	//DoubleBuffer::GetInstance()->SetCursorPosition(m_tInfo.Position);
 	cout << m_strTexture;
+
+
+
+
 }
 
 void Player::OnDestroy()

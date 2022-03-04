@@ -3,6 +3,8 @@
 
 class Player : public GameObject
 {
+private:
+	char map[100][27];
 public:
 	virtual void Awake()override;
 	virtual void Start()override;

@@ -45,7 +45,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="CollisionManager.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Logo.cpp" />
     <ClCompile Include="Main.cpp" />
@@ -56,7 +55,7 @@
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="SceneManager.cpp" />
-    <ClCompile Include="ScreenManager.cpp" />
+    <ClCompile Include="DoubleBuffer.cpp" />
     <ClCompile Include="Stage.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -74,7 +73,7 @@
     <ClInclude Include="Player.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SceneManager.h" />
-    <ClInclude Include="ScreenManager.h" />
+    <ClInclude Include="DoubleBuffer.h" />
     <ClInclude Include="Stage.h" />
     <ClInclude Include="Struct.h" />
   </ItemGroup>
