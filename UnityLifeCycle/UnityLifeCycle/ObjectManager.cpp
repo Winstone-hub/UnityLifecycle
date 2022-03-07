@@ -28,21 +28,35 @@ void ObjectManager::AddObject(GameObject* _pObj)
 		iter->second.push_back(_pObj);
 }
 
+// ** _Origin 과의 가장 가까운 오브젝트를 구함.
 GameObject* ObjectManager::GetTarget(GameObject* _Origin, string _Key)
 {
+	// ** multimap = 키값이 중복 가능함 (list와 비슷한 컨테이너)
 	multimap<float, GameObject*> SortObject;
 
+	// ** 오브젝트 리스트를 탐색하고 받아오는 과정에서
+	// ** 리스트목록이 있다면 목록을 반환 하고
 	vector<GameObject*>* pTargetList = GetObjectList(_Key);
 
-	for (vector<GameObject*>::iterator iter = pTargetList->begin();
-		iter != pTargetList->end(); ++iter)
+	// ** 없다면 nullptr을 반환.
+	if (pTargetList == nullptr)
+		return nullptr;
+	else
 	{
-		float Distance = MathManager::GetDistance(_Origin->GetTransform(), (*iter)->GetTransform());
+		// ** 모든 목록을 확인함
+		for (vector<GameObject*>::iterator iter = pTargetList->begin();
+			iter != pTargetList->end(); ++iter)
+		{
+			// ** 거리를 구함
+			float Distance = MathManager::GetDistance(_Origin->GetTransform(), (*iter)->GetTransform());
 
-		SortObject.insert(make_pair(Distance, (*iter)));
+			// ** 구한 거리를 Key값으로 추가. (오름차순 정렬)
+			SortObject.insert(make_pair(Distance, (*iter)));
+		}
+
+		// ** 가장 처음에 있는 원소가 가장 가까운 원소이기때문에 처음 오브젝트를 반환.
+		return SortObject.begin()->second;
 	}
-
-	return SortObject.begin()->second;
 }
 
 

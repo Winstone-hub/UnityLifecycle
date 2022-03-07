@@ -18,6 +18,7 @@ private:
 public:
 	void AddObject(GameObject* _pObj);
 public:
+	// ** 타겟을 탐색하여 있으면 타겟 리스트를 반환. 없다면 nullptr 
 	vector<GameObject*>* GetObjectList(string _Key)
 	{
 		map<string, vector<GameObject*>>::iterator iter = m_pObjectList.find(_Key);

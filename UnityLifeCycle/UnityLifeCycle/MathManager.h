@@ -5,17 +5,17 @@
 class MathManager
 {
 public:
-	static Vector3 GetDirection(GameObject* _Origin, GameObject* _Target)
+	// ** 방향을 구하는 함수.
+	static Vector3 GetDirection(const Transform& _Origin, const Transform& _Target)
 	{
-		Vector3 OriginPos = _Origin->GetPosition();
-		Vector3 TargetPos = _Target->GetPosition();
-
-		float x = TargetPos.x - OriginPos.x;
-		float y = TargetPos.y - OriginPos.y;
+		// ** 타겟과의 X, Y값을 구함.
+		float x = _Target.Position.x - _Origin.Position.x;
+		float y = _Target.Position.y - _Origin.Position.y;
 
 		// ** sqrt() = 루트 함수.
-		float Distance = GetDistance(_Origin->GetTransform(), _Target->GetTransform());
+		float Distance = sqrt((x * x) + (y * y));
 
+		// ** 방향만 남김.
 		Vector3 Direction = Vector3(
 			x / Distance,
 			y / Distance);
@@ -23,8 +23,10 @@ public:
 		return Direction;
 	}
 
+	// ** 거리를 구하는 함수
 	static float GetDistance(const Transform& _Origin, const Transform& _Target)
 	{
+		// ** 타겟과의 X, Y값을 구함.
 		float x = _Target.Position.x - _Origin.Position.x;
 		float y = _Target.Position.y - _Origin.Position.y;
 

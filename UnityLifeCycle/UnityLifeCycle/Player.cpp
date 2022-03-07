@@ -63,11 +63,14 @@ void Player::Update()
 
 	if (GetAsyncKeyState(VK_SPACE))
 	{
+		// ** 총알 생성
 		GameObject* pBullet = ObjectFactory<Bullet>::CreateObject(m_tInfo.Position);
 
+		// ** 타겟 설정 : 타겟이 없으면 nullptr
 		GameObject* Target = ObjectManager::GetInstance()->GetTarget(this, "Enemy");
 		((Bullet*)pBullet)->SetTarget(Target);
 		
+		// ** 오브젝트 리스트에 추가
 		ObjectManager::GetInstance()->AddObject(pBullet);
 	}
 

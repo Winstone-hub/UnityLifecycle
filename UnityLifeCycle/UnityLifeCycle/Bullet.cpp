@@ -35,10 +35,15 @@ void Bullet::FixedUpdate()
 
 void Bullet::Update()
 {
-	Direction = MathManager::GetDirection(this, Target);
+	if (Target)
+	{
+		Direction = MathManager::GetDirection(m_tInfo, Target->GetTransform());
 
-	m_tInfo.Position.x += Direction.x;
-	m_tInfo.Position.y += Direction.y;
+		m_tInfo.Position.x += Direction.x;
+		m_tInfo.Position.y += Direction.y;
+	}
+	else
+		m_tInfo.Position.x += 1;
 }
 
 void Bullet::LateUpdate()

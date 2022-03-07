@@ -34,7 +34,6 @@ void Stage::Awake()
 		ObjectManager::GetInstance()->AddObject(pEnemy);
 	}
 
-
 	for (int i = 0; i < 1; ++i)
 	{
 		GameObject* pBullet = ObjectFactory<Bullet>::CreateObject(
@@ -70,7 +69,7 @@ void Stage::FixedUpdate()
 		{
 			if (CollisionManager::Collision((*iter), (*iter2)))
 			{
-				DoubleBuffer::GetInstance()->WriteBuffer(1.0f, 1.0f, (char*)"BBBBBBBBBB 충돌입니다.");
+				DoubleBuffer::GetInstance()->WriteBuffer(1.0f, 1.0f, (char*)"충돌입니다.");
 			}
 		}
 	}
@@ -99,6 +98,16 @@ void Stage::Render()
 {
 	m_pPlayer->Render();
 	
+	/*
+	* 숙제
+	for (map<FRAMEID, vector<GameObject*>*>::iterator iter = m_pObjects.begin();
+		iter != m_pObjects.end(); ++iter)
+	{
+
+	}
+	*/
+
+
 	for (vector<GameObject*>::iterator iter = m_pObjects[FRAMEID_THIRD]->begin();
 		iter != m_pObjects[FRAMEID_THIRD]->end(); ++iter)
 		(*iter)->Render();
