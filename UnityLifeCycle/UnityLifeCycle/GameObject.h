@@ -6,7 +6,7 @@ class GameObject
 protected:
 	Transform m_tInfo;
 	string m_strKey;
-	string m_strTexture;
+	//string m_strTexture;
 	char* Texture;
 public:
 	virtual void Awake()PURE;

@@ -1,13 +1,11 @@
 #pragma once
 #include "GameObject.h"
 
-class Player : public GameObject
+class Bullet : public GameObject
 {
 private:
 	DIRENTIONID Direction;
-	float OldX;
-
-	bool Check;
+	GameObject* Target;
 public:
 	virtual void Awake()override;
 	virtual void Start()override;
@@ -17,7 +15,8 @@ public:
 	virtual void Render()override;
 	virtual void OnDestroy()override;
 public:
-	Player();
-	virtual ~Player();
+	void SetTarget(GameObject* _Target) { Target = _Target; }
+public:
+	Bullet();
+	virtual ~Bullet();
 };
-

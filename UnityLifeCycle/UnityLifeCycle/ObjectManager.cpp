@@ -1,5 +1,6 @@
 #include "ObjectManager.h"
 #include "GameObject.h"
+#include "MathManager.h"
 
 ObjectManager* ObjectManager::Instance = nullptr;
 
@@ -27,7 +28,27 @@ void ObjectManager::AddObject(GameObject* _pObj)
 		iter->second.push_back(_pObj);
 }
 
+GameObject* ObjectManager::GetTarget(GameObject* _Origin, string _Key)
+{
+	multimap<float, GameObject*> SortObject;
+
+	vector<GameObject*>* pTargetList = GetObjectList(_Key);
+
+	for (vector<GameObject*>::iterator iter = pTargetList->begin();
+		iter != pTargetList->end(); ++iter)
+	{
+		float Distance = MathManager::GetDistance(_Origin->GetTransform(), (*iter)->GetTransform());
+
+		SortObject.insert(make_pair(Distance, (*iter)));
+	}
+
+	return SortObject.begin()->second;
+}
+
+
+/*
 void ObjectManager::Update()
 {
 
 }
+*/

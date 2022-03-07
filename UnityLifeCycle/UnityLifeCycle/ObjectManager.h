@@ -28,9 +28,12 @@ public:
 			return &iter->second;
 	}
 
-	void Update();
+	GameObject* GetTarget(GameObject* _Origin, string _Key);
+	
+
 
 	/*
+	void Update();
 	void Start();
 	void FixedUpdate();
 	void LateUpdate();

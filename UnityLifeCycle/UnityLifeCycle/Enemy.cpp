@@ -22,7 +22,7 @@ void Enemy::Start()
 	m_tInfo.Rotation = Vector3(0.0f, 0.0f, 0.0f);
 	m_tInfo.Scale = Vector3(1.0f, 1.0f, 0.0f);
 
-	m_strTexture = "E";
+	//m_strTexture = "E";
 	Texture = (char*)"E";
 }
 

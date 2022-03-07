@@ -61,6 +61,12 @@
     <Filter Include="소스 파일\99. Manager\CollisionManager">
       <UniqueIdentifier>{63f32ed7-4b3a-438c-879b-59fdc8af4a76}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\01. Object\Bullet">
+      <UniqueIdentifier>{94fa5529-ef96-4118-9b1f-c3c38d32868a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\99. Manager\MahtManager">
+      <UniqueIdentifier>{7d39a3b1-596a-4d03-876c-193221ee81f5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -98,6 +104,9 @@
     </ClCompile>
     <ClCompile Include="DoubleBuffer.cpp">
       <Filter>소스 파일\99. Manager\ScreenManager</Filter>
+    </ClCompile>
+    <ClCompile Include="Bullet.cpp">
+      <Filter>소스 파일\01. Object\Bullet</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -154,6 +163,12 @@
     </ClInclude>
     <ClInclude Include="Constant.h">
       <Filter>헤더 파일\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="Bullet.h">
+      <Filter>소스 파일\01. Object\Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="MathManager.h">
+      <Filter>소스 파일\99. Manager\MahtManager</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
