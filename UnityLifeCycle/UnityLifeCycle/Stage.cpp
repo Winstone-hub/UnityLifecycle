@@ -39,6 +39,10 @@ void Stage::Awake()
 	{
 		GameObject* pBullet = ObjectFactory<Bullet>::CreateObject(
 			pPlayer->GetPosition());
+
+		GameObject* Target = ObjectManager::GetInstance()->GetTarget(pPlayer, "Enemy");
+		((Bullet*)pBullet)->SetTarget(Target);
+
 		ObjectManager::GetInstance()->AddObject(pBullet);
 	}
 }
@@ -47,6 +51,7 @@ void Stage::Start()
 {
 	m_pObjects[FRAMEID_THIRD] = ObjectManager::GetInstance()->GetObjectList("Enemy");
 	m_pObjects[FRAMEID_SECOND] = ObjectManager::GetInstance()->GetObjectList("Bullet");
+
 	m_pPlayer = ObjectManager::GetInstance()->GetObjectList("Player")->front();
 }
 

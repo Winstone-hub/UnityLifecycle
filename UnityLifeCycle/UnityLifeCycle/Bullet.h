@@ -4,7 +4,7 @@
 class Bullet : public GameObject
 {
 private:
-	DIRENTIONID Direction;
+	Vector3 Direction;
 	GameObject* Target;
 public:
 	virtual void Awake()override;

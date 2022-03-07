@@ -63,14 +63,17 @@ void Player::Update()
 
 	if (GetAsyncKeyState(VK_SPACE))
 	{
-		GameObject* pBulelt = ObjectFactory<Bullet>::CreateObject(m_tInfo.Position);
-		//((Bullet*)pBulelt)->SetTarget();
-		ObjectManager::GetInstance()->AddObject(pBulelt);
+		GameObject* pBullet = ObjectFactory<Bullet>::CreateObject(m_tInfo.Position);
+
+		GameObject* Target = ObjectManager::GetInstance()->GetTarget(this, "Enemy");
+		((Bullet*)pBullet)->SetTarget(Target);
+		
+		ObjectManager::GetInstance()->AddObject(pBullet);
 	}
 
 	if (GetAsyncKeyState('T'))
 	{
-
+		//DoubleBuffer::GetInstance()->WriteBuffer(48, 1, (char*)"<Enemy>");
 	}
 }
 

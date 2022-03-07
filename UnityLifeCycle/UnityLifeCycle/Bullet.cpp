@@ -1,5 +1,6 @@
 #include "Bullet.h"
 #include "DoubleBuffer.h"
+#include "MathManager.h"
 
 
 Bullet::Bullet() : Target(nullptr)
@@ -34,7 +35,10 @@ void Bullet::FixedUpdate()
 
 void Bullet::Update()
 {
+	Direction = MathManager::GetDirection(this, Target);
 
+	m_tInfo.Position.x += Direction.x;
+	m_tInfo.Position.y += Direction.y;
 }
 
 void Bullet::LateUpdate()
