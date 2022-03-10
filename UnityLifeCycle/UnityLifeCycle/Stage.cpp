@@ -97,17 +97,20 @@ void Stage::LateUpdate()
 void Stage::Render()
 {
 	m_pPlayer->Render();
-	
-	/*
-	* ¼÷Á¦
+
+	// ** ¼÷Á¦
+	// iter->second == vector<GameObject*>*
 	for (map<FRAMEID, vector<GameObject*>*>::iterator iter = m_pObjects.begin();
 		iter != m_pObjects.end(); ++iter)
 	{
-
+		for(vector<GameObject*>::iterator iter2 = iter->second->begin();
+			iter2 != iter->second->end(); ++iter2)
+		{
+			(*iter2)->Render();
+		}
 	}
-	*/
 
-
+	/*
 	for (vector<GameObject*>::iterator iter = m_pObjects[FRAMEID_THIRD]->begin();
 		iter != m_pObjects[FRAMEID_THIRD]->end(); ++iter)
 		(*iter)->Render();
@@ -115,6 +118,7 @@ void Stage::Render()
 	for (vector<GameObject*>::iterator iter = m_pObjects[FRAMEID_SECOND]->begin();
 		iter != m_pObjects[FRAMEID_SECOND]->end(); ++iter)
 		(*iter)->Render();
+	*/
 }
 
 void Stage::OnDestroy()

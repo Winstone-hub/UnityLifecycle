@@ -59,7 +59,6 @@ GameObject* ObjectManager::GetTarget(GameObject* _Origin, string _Key)
 	}
 }
 
-
 /*
 void ObjectManager::Update()
 {
