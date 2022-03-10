@@ -33,7 +33,7 @@ void Stage::Awake()
 
 		ObjectManager::GetInstance()->AddObject(pEnemy);
 	}
-
+	
 	for (int i = 0; i < 1; ++i)
 	{
 		GameObject* pBullet = ObjectFactory<Bullet>::CreateObject(
@@ -44,6 +44,7 @@ void Stage::Awake()
 
 		ObjectManager::GetInstance()->AddObject(pBullet);
 	}
+	
 }
 
 void Stage::Start()
@@ -56,6 +57,7 @@ void Stage::Start()
 
 void Stage::FixedUpdate()
 {
+/*
 	for (vector<GameObject*>::iterator iter = m_pObjects[FRAMEID_THIRD]->begin();
 		iter != m_pObjects[FRAMEID_THIRD]->end(); ++iter)
 	{
@@ -73,19 +75,23 @@ void Stage::FixedUpdate()
 			}
 		}
 	}
+		*/
 }
 
 void Stage::Update()
 {
 	m_pPlayer->Update();
 
-	for (vector<GameObject*>::iterator iter = m_pObjects[FRAMEID_THIRD]->begin();
-		iter != m_pObjects[FRAMEID_THIRD]->end(); ++iter)
-		(*iter)->Update();
-
-	for (vector<GameObject*>::iterator iter = m_pObjects[FRAMEID_SECOND]->begin();
-		iter != m_pObjects[FRAMEID_SECOND]->end(); ++iter)
-		(*iter)->Update();
+	for (map<FRAMEID, vector<GameObject*>*>::iterator iter = m_pObjects.begin();
+		iter != m_pObjects.end(); ++iter)
+	{
+		if(iter->second != nullptr)
+		for (vector<GameObject*>::iterator iter2 = iter->second->begin();
+			iter2 != iter->second->end(); ++iter2)
+		{
+			(*iter2)->Update();
+		}
+	}
 }
 
 void Stage::LateUpdate()
@@ -103,29 +109,28 @@ void Stage::Render()
 	for (map<FRAMEID, vector<GameObject*>*>::iterator iter = m_pObjects.begin();
 		iter != m_pObjects.end(); ++iter)
 	{
-		for(vector<GameObject*>::iterator iter2 = iter->second->begin();
-			iter2 != iter->second->end(); ++iter2)
+		if(iter->second != nullptr)
+			for (vector<GameObject*>::iterator iter2 = iter->second->begin();
+				iter2 != iter->second->end(); ++iter2)
 		{
 			(*iter2)->Render();
 		}
 	}
-
-	/*
-	for (vector<GameObject*>::iterator iter = m_pObjects[FRAMEID_THIRD]->begin();
-		iter != m_pObjects[FRAMEID_THIRD]->end(); ++iter)
-		(*iter)->Render();
-
-	for (vector<GameObject*>::iterator iter = m_pObjects[FRAMEID_SECOND]->begin();
-		iter != m_pObjects[FRAMEID_SECOND]->end(); ++iter)
-		(*iter)->Render();
-	*/
 }
 
 void Stage::OnDestroy()
 {
 	SafeRelease(m_pPlayer);
 
-	//for (vector<GameObject*>::iterator iter = m_pObjects->begin();
-		//iter != m_pObjects->end(); ++iter)
-		//SafeRelease((*iter));
+	for (map<FRAMEID, vector<GameObject*>*>::iterator iter = m_pObjects.begin();
+		iter != m_pObjects.end(); ++iter)
+	{
+		for (vector<GameObject*>::iterator iter2 = iter->second->begin();
+			iter2 != iter->second->end(); ++iter2)
+		{
+			SafeRelease((*iter2));
+		}
+		iter->second->clear();
+	}
+	m_pObjects.clear();
 }

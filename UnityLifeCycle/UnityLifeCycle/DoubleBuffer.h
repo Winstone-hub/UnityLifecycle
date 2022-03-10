@@ -18,9 +18,10 @@ private:
 public:
 	void Start();
 	void CreateBuffer(const int& _Width, const int& _Height);
-	void WriteBuffer(const float& _x, const float& _y, char* _str);
+	void WriteBuffer(const float& _x, const float& _y, char* _str, DWORD _Color = Èò»ö);
 	void FlippingBuffer();
 	void ClearBuffer();
+	void DestoryBuffer();
 private:
 	DoubleBuffer();
 public:

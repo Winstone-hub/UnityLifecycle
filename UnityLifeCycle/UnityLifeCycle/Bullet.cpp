@@ -56,7 +56,8 @@ void Bullet::Render()
 	DoubleBuffer::GetInstance()->WriteBuffer(
 		m_tInfo.Position.x,
 		m_tInfo.Position.y,
-		Texture);
+		Texture, 
+		rand()% COLORMAX);
 }
 
 void Bullet::OnDestroy()

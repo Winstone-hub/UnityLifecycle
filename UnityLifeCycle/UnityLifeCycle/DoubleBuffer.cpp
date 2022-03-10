@@ -9,7 +9,7 @@ DoubleBuffer::DoubleBuffer()
 
 DoubleBuffer::~DoubleBuffer()
 {
-
+	DestoryBuffer();
 }
 
 void DoubleBuffer::Start()
@@ -55,12 +55,13 @@ void DoubleBuffer::CreateBuffer(const int& _Width, const int& _Height)
 	SetConsoleCursorInfo(hBuffer[1], &Cursor);
 }
 
-void DoubleBuffer::WriteBuffer(const float& _x, const float& _y, char* _str)
+void DoubleBuffer::WriteBuffer(const float& _x, const float& _y, char* _str, DWORD _Color)
 {
 	DWORD dw;
 	COORD Cursor = { (SHORT)_x, (SHORT)_y };
 
 	SetConsoleCursorPosition(hBuffer[BufferIndex], Cursor);
+	SetConsoleTextAttribute(hBuffer[BufferIndex], _Color);
 	WriteFile(hBuffer[BufferIndex], _str, strlen(_str), &dw, NULL);
 }
 
@@ -77,4 +78,10 @@ void DoubleBuffer::ClearBuffer()
 
 	FillConsoleOutputCharacter(hBuffer[BufferIndex],
 		' ', WIDTHSIZE * HEIGHTSIZE, Coord, &dw);
+}
+
+void DoubleBuffer::DestoryBuffer()
+{
+	CloseHandle(hBuffer[0]);
+	CloseHandle(hBuffer[1]);
 }
