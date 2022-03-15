@@ -20,7 +20,7 @@ int main(void)
 
 	// ** Initialize
 	Main.Awake();
-
+	
 	while (true)
 	{
 		if (OriginTime + DeltaTime < GetTickCount64())

@@ -44,7 +44,6 @@ void Stage::Awake()
 
 		ObjectManager::GetInstance()->AddObject(pBullet);
 	}
-	
 }
 
 void Stage::Start()
